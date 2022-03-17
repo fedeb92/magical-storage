@@ -1,5 +1,6 @@
 import React from 'react';
-
+import WidgetMarket from './WidgetMarket'
+import ItemsListColection from './ItemsListContainer'
 
 import { home, ropa, varitas, objetos,} from './strings.js';
 const NavBar = () => {
@@ -20,6 +21,10 @@ const NavBar = () => {
         </div>
         </div>
         </div>
+
+        <li>
+        <a class="nav-link" href="#"><span><WidgetMarket/></span></a>
+        </li>
         
     </nav>
     
