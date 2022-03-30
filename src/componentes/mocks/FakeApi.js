@@ -1,9 +1,8 @@
-import React  from "react";
-import { Item } from "./Item";
-import prod01 from '../img/brazales1.png';
-import prod02 from '../img/brazales2.png';
-import prod03 from '../img/brazales3.png';
-import prod04 from '../img/brazales4.png';
+
+import prod01 from '../../img/brazales1.png';
+import prod02 from '../../img/brazales2.png';
+import prod03 from '../../img/brazales3.png';
+import prod04 from '../../img/brazales4.png';
 
 
 
@@ -14,8 +13,10 @@ const ItemCard = [
         producto:'brazales de libertad arcana',
         precio: '2300 ARG',
         descripcion:'estos brazales de cuero azul ricamente adornados tiene imagenes de aguilas doradas en pleno vuelo',
+        descripcionDetail:'',
         btn:'Ver más',
-        category:'brazales',
+        category:'Brazales',
+    
     
     },
     
@@ -24,9 +25,9 @@ const ItemCard = [
         producto:'brazales de poder',
         precio: '4100 ARG',
         descripcion:'estos brazalas de bronce tiene grabad de imagenes de cuernos de toro',
+        descripcionDetail:'',
         btn:'Ver más',
-        category:'panza',
-    
+        category:'brazales',
     },
     
     
@@ -35,45 +36,29 @@ const ItemCard = [
         producto:'brazales de represalia',
         precio: '5000 ARG',
         descripcion:'estos brazales de duro cuero parece resistentes aunque flexibles',
+        descripcionDetail:'',
         btn:'Ver más',
-        category:'hombros',
+        category:'brazales',
     },
     {   id: 4,
         img: prod04,
         producto:'brazales de gran colision',
         precio: '1500 ARG',
         descripcion:'estos grusos brazales de platino tiene grabado un dibujo de martillos cruzados',
+        descripcionDetail:'',
         btn:'Ver más',
-        category:'manos',
-    
+        category:'piernas',
     },
-    
-    ];
-    
-    const promesaCard = new Promise((resolve , reject)=>{
-     setTimeout(() =>{
-    
-        const Items   = ItemCard;
-       resolve ( Items );
-    
-      },2000 )
-    
-    
-    });
 
+];
 
-    export const ItemInf = () =>{
-        return (
-            <div className="contenedorInfoCard">
-                {
-                  ItemCard.map ((item )=> (
-    
-                  <Item producto={item.producto} precio = {item.precio} descripcion = {item.descripcion} img ={item.img} btn = {item.btn}  />
-    
-                  ))}
-            </div>
-        )
-    };
-    
-    
-    export default ItemInf; 
+export const getProducts = new Promise((resolve, reject)=>{
+    let condition = true
+    if(condition){
+      setTimeout(()=>{
+        resolve(ItemCard)
+      },2000)
+    }else{
+      reject('Error de datos')
+    }
+  })
