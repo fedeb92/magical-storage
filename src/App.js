@@ -14,20 +14,12 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar/>
-
       <Routes>
       <Route path="*" element = {<Navigate to="/"/>} />
-      
-      
       <Route path='/' element = {<ItemsListContainer/>}/>
       <Route path='/category/:categoryId' element = {<ItemsListContainer/>}/>
       </Routes>
-      
-      
     </BrowserRouter>
-        
-  
-    
   );
 }
 
