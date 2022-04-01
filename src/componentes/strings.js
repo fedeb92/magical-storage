@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export const home = "home"
-export const ropa = "ropa"
-export const varitas = "varitas"
-export const objetos = "objetos"
+export const brazales = "brazales"
+export const camisas = "camisas"
+export const botas = "botas"
+export const collares = "collares"

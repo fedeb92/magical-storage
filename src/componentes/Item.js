@@ -1,6 +1,6 @@
 import React from 'react';
 import Cart from "./ItemCount";
-
+import { Link } from "react-router-dom"
 const stock = 14;
 const initial = 1;
 const onAdd =(contador) =>
@@ -8,7 +8,7 @@ const onAdd =(contador) =>
     console.log('click',contador);
 };
 
-export const Item = ({img, producto, precio, descripcion,btn}) => {
+export const Item = ({id,img, producto, precio, descripcion,btn}) => {
 
 
     return (
@@ -30,8 +30,10 @@ export const Item = ({img, producto, precio, descripcion,btn}) => {
     </div>
     
         <div className="contenedorBtn">
-        <button className="btnCatalogo">{btn} </button>
+        <Link to={`/detail/${id}`}><button className="btnCatalogo">{btn} </button></Link>
         </div>
+
+        
     </div>
     );
 };

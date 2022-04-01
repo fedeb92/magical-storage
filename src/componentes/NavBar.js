@@ -1,8 +1,9 @@
 import React from 'react';
 import WidgetMarket from './WidgetMarket'
 import ItemsListColection from './ItemsListContainer'
+import { Link } from 'react-router-dom';
 
-import { home, ropa, varitas, objetos,} from './strings.js';
+import { home, ropa, varitas, brazales, camisas, botas, collares,} from './strings.js';
 const NavBar = () => {
     return <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,11 +14,11 @@ const NavBar = () => {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">magical buisness</a>
-        <a class="nav-link" href="#"><span>{home}</span></a>
-        <a class="nav-link" href="#"><span>{varitas}</span></a>
-        <a class="nav-link disabled"><span>{objetos}</span></a>
-        <a class="nav-link disabled"><span>{ropa}</span></a>
+        <Link to='/' class="nav-link active" aria-current="page" href="#">magical buisness</Link>
+        <Link to='/category/Brazales'class="nav-link" href="#"><span>{brazales}</span></Link>
+        <Link to='/category/Camisas'class="nav-link" href="#"><span>{camisas}</span></Link>
+        <Link to=''class="nav-link disabled"><span>{botas}</span></Link>
+        <Link to=''class="nav-link disabled"><span>{collares}</span></Link>
         </div>
         </div>
         </div>

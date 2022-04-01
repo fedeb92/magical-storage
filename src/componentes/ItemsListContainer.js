@@ -12,6 +12,7 @@ const ItemsListContainer = ({objetos,descripcion}) => {
     const[cargando,setCargando] = useState(false)
 
         const{categoryId} = useParams()
+       
 
         useEffect(()=>
         {
@@ -39,11 +40,7 @@ const ItemsListContainer = ({objetos,descripcion}) => {
               {cargando ? <p className='Cargando'>cargando</p> : <ItemList listaProductos= {listaProductos} />}   
                 </div>
             </div>
-           
           );
-        
-        
         };
-        
         export default ItemsListContainer ;
     

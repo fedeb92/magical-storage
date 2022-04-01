@@ -15,7 +15,7 @@ const ItemCard = [
         descripcion:'estos brazales de cuero azul ricamente adornados tiene imagenes de aguilas doradas en pleno vuelo',
         descripcionDetail:'',
         btn:'Ver más',
-        category:'brazales',
+        category:'Camisas',
     
     
     },
@@ -27,7 +27,7 @@ const ItemCard = [
         descripcion:'estos brazalas de bronce tiene grabad de imagenes de cuernos de toro',
         descripcionDetail:'',
         btn:'Ver más',
-        category:'brazales',
+        category:'Brazales',
     },
     
     
