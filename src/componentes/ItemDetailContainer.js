@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { getProducts } from "../componentes/mocks/FakeApi";
-import ItemDetail from "./ItemDetail";
+//import { Container } from "react-bootstrap"
+import { PedirDatos } from "./Helper";
+import ItemDetail from "../componentes/ItemDetail";
 import { useParams } from 'react-router-dom';
 
 
 const ItemDetailContainer = () =>{
-const [productDetail, setProductDetail] = useState({})
-const [cargandin, setCargandin] = useState(false)
+const [productDetail, setDetail] = useState(null)
+const [loading, setLoading] = useState(true)
 
 const {itemId} = useParams()
 
+console.log = (itemId)
+
+
     useEffect(()=>{
-      setCargandin(true)
-        getProducts
-        .then((res) => setProductDetail(res.find((item) => item.id === itemId)))
-        .catch((error) => console.log(error))
-        .finally(() => setCargandin(false))
+        //setCargandin(true)
+        PedirDatos()
+            .then((res) => setDetail
+            (res.find((prod) => prod.id === itemId)))
+        
+        //.catch((error) => console.log(error))
+        //.finally(() => setCargandin(false))
 
     }, [])
    
 
     return(
         <div>
-            { cargandin ? <p>cargandin</p> : <ItemDetail productDetail={productDetail} /> }
-  
+            { loading ? <p>Item Detail</p> : <ItemDetail productDetail={productDetail} /> }
         </div>
     )
 }

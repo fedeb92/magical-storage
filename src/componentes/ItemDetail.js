@@ -1,55 +1,77 @@
-import React from "react";
-import { Link } from 'react-router-dom';
-import Cart from "./ItemCount";
+import { useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { CartContext } from "./CartContext"
+import ItemCount from "./ItemCount"
+import Select from "./Select"
 
-const stock = 10;
-const initial =1;
-const onAdd =(contador) =>{
-    console.log('click', contador);
-};
+const options = [
+    {value: 'L', text: 'Large'},
+    {value: 'M', text: 'Medium'},
+    {value: 'S', text: 'Small'}
+]
+// const options = [
+//     {value: 'rojo', text: 'Rojo'},
+//     {value: 'verde', text: 'Verde'},
+//     {value: 'azul', text: 'Azul'},
+//     {value: 'violeta', text: 'Violeta'},
+//     {value: 'negro', text: 'Negro'},
+// ]
 
-const ItemDetail = ({productDetail}) =>{
-   const {img, producto, precio, imgDetail, descripcionDetail, pjclaseH } = productDetail
-  
-    return(
-        <div className="contenedorDetail">
-           <div className="contenedorMuestraImg">
-            <div className="contenedorMiniMuestra">
-                <div className="miniProduct">
-                    <a href="" ></a>
-              <img className="imgDetail" src={ imgDetail} alt={producto} />
-              <img className="imgDetail" src={img} alt={producto} />
-              <img className="imgDetail" src={img} alt={producto} /> 
-                </div>
-            </div>
-            <div className="contenedorProductoVista">
-           <img className="productoI" src={img} alt={producto} />
-        </div>
-           </div>
-            <div className="detailProduct">
-                <div className="contenedorInfDetail">
-            <h2 className="tituloDetail">{producto} </h2> 
-            <p className="descripcionProducto"> {descripcionDetail} </p>
-            <p className="precioDetail"> {precio} </p>
-            <hr />
-             <div className="contenedorTallas">
-                 <p>Selecciona para que clase de personaje</p>
-                 <div className="tallas">
-                    <p className="mago">{pjclaseH} </p> 
-                    <p className="mago">{pjclaseH} </p> 
-                    <p className="mago">{pjclaseH} </p> 
-                 </div>
-             </div>
-             <hr />
-             </div>
+const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
 
-             <div className="contenedorConteoCart">
-             <p className="parrafoCantidad">Selecciona cantidad </p>
-    <div className="cartAdd" href={"#/"}>  <span> <Cart stock={stock} initial={initial} onAdd={onAdd} /> </span></div>
- </div>
-          
-            </div>
+    const { addItem, isInCart } = useContext(CartContext)
+
+    const navigate = useNavigate()
+
+    const handleNavigate = () => {
+        navigate(-1)
+    }
+
+    const [cantidad, setCantidad] = useState(1)
+    const [color, setColor] = useState('L')
+
+
+    const agregarAlCarrito = () => {
+        const itemToAdd = {
+            id,
+            nombre,
+            precio,
+            img,
+            color,
+            cantidad
+        }
+
+        addItem(itemToAdd)
+    }
+
+    return (
+        <div>
+            <h2>{nombre}</h2>
+            <img src={img} alt={nombre}/>
+            <p>{desc}</p>
+            <h4>Precio: ${precio}</h4>
+            <small>Stock disponible: {stock}</small>
+            <Select 
+                options={options}
+                onSelect={setColor}
+            />
+            
+            {
+                !isInCart(id)
+                    ? <ItemCount 
+                            max={stock}
+                            cantidad={cantidad}
+                            setCantidad={setCantidad}
+                            onAdd={agregarAlCarrito}
+                        />
+                    : <Link to="/cart" className="btn btn-success d-block my-3">Terminar mi compra</Link>
+            }
+            
+            <hr/>
+            <button className="btn btn-outline-primary" onClick={handleNavigate}>Volver</button>
+            {/* <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>Volver</button> */}
         </div>
     )
 }
-export default ItemDetail;
+
+export default ItemDetail
